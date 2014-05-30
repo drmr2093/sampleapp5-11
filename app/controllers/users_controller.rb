@@ -13,8 +13,9 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def show
+   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def new
